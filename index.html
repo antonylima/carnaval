@@ -428,6 +428,43 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .card-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+            gap: 6px;
+        }
+
+        .btn-action:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-maps {
+            background-color: #34A853;
+            color: white;
+        }
+
+        .btn-uber {
+            background-color: #000000;
+            color: white;
+        }
+
         .empty-state {
             text-align: center;
             grid-column: 1 / -1;
@@ -791,6 +828,24 @@
                         </div>
                     </div>
                     <div class="badge">${item.bairro}</div>
+                    
+                    <div class="card-actions">
+                        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.local + ', ' + item.bairro + ', Fortaleza, CE')}" target="_blank" class="btn-action btn-maps">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Maps
+                        </a>
+                        <a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${encodeURIComponent(item.local + ', ' + item.bairro + ', Fortaleza, CE')}" target="_blank" class="btn-action btn-uber">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10 10 10 0 0 1-10-10 10 10 0 0 1 10-10z" fill="white" stroke="none"/>
+                                <path d="M9 12h6" stroke="black" stroke-width="2"/>
+                            </svg>
+                            Uber
+                        </a>
+                    </div>
                 </div>
             `;
                 grid.appendChild(card);
