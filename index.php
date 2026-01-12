@@ -1,10 +1,13 @@
+<?php
+require_once 'visitas.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda de Blocos de Rua - Fortaleza 2024</title>
+    <title>Carnaval Fortaleza 2026</title>
     <style>
         :root {
             --primary: #FF6B35;
@@ -586,7 +589,7 @@
     </svg>
 
     <header>
-        <h1>🎭 Blocos de Rua 2024 🎊</h1>
+        <h1>🎭 CARNAVAL 2026 🎊</h1>
         <p>Encontre a folia em Fortaleza filtrando por dia e bairro.</p>
     </header>
 
@@ -671,67 +674,135 @@
 
     <script>
         const eventos = [
-            { nome: "Bloco Marufolia", dataIso: "2024-01-12", dataFmt: "12/01 (Sexta)", hora: "19h", bairro: "Demócrito Rocha", local: "Praça do Marupiara" },
-            { nome: "Banda do Periquito da Madame", dataIso: "2024-01-13", dataFmt: "13/01 (Sábado)", hora: "15h", bairro: "Centro", local: "Mercado dos Pinhões" },
-            { nome: "Bloco Doido é Tu", dataIso: "2024-01-13", dataFmt: "13/01 (Sábado)", hora: "17h", bairro: "Rodolfo Teófilo", local: "Praça da Areninha" },
-            { nome: "As Panteras Cor de Rosa", dataIso: "2024-01-13", dataFmt: "13/01 (Sábado)", hora: "17h", bairro: "Centro", local: "Rua João Cordeiro (Polo da Mocinha)" },
-            { nome: "Bloco Sambamor", dataIso: "2024-01-13", dataFmt: "13/01 (Sábado)", hora: "17h", bairro: "Praia de Iracema", local: "Rua João Cordeiro" },
-            { nome: "Bloco Cachorra Magra", dataIso: "2024-01-13", dataFmt: "13/01 (Sábado)", hora: "18h30", bairro: "Benfica", local: "Rua Marechal Deodoro, 216" },
-            { nome: "Balaku Baku Folia", dataIso: "2024-01-13", dataFmt: "13/01 (Sábado)", hora: "19h", bairro: "Farias Brito", local: "Beco dos Pintos" },
-            { nome: "Bloco Sivozinha Folia", dataIso: "2024-01-14", dataFmt: "14/01 (Domingo)", hora: "08h", bairro: "Messejana", local: "Casa José de Alencar" },
-            { nome: "Bloco Girassol", dataIso: "2024-01-14", dataFmt: "14/01 (Domingo)", hora: "16h", bairro: "Meireles", local: "Bar da Mocinha" },
-            { nome: "Bloco Dragões do Ritmo", dataIso: "2024-01-14", dataFmt: "14/01 (Domingo)", hora: "16h", bairro: "Praia de Iracema", local: "Bar da Mocinha" },
-            { nome: "Bloco Relaxa Bebe", dataIso: "2024-01-14", dataFmt: "14/01 (Domingo)", hora: "17h", bairro: "Cais do Porto", local: "Praça da Vista" },
-            { nome: "Baixinhos do Mincharia", dataIso: "2024-01-14", dataFmt: "14/01 (Domingo)", hora: "17h", bairro: "Praia de Iracema", local: "Largo do Mincharia" },
-            { nome: "Bloco do Zé Almir", dataIso: "2024-01-14", dataFmt: "14/01 (Domingo)", hora: "17h30", bairro: "Granja Lisboa", local: "Rua Geraldo Barbosa" },
-            { nome: "Meninada Folia", dataIso: "2024-01-17", dataFmt: "17/01 (Quarta)", hora: "18h", bairro: "Monte Castelo", local: "Centro de Juventude Igor de Andrade" },
-            { nome: "Ponto de Cultura LGBTQIA+", dataIso: "2024-01-17", dataFmt: "17/01 (Quarta)", hora: "19h", bairro: "Conjunto Curió", local: "Praça Santa Edwiges" },
-            { nome: "Tambores Carnavalesco", dataIso: "2024-01-18", dataFmt: "18/01 (Quinta)", hora: "19h", bairro: "Praia de Iracema", local: "Passarela do Dragão do Mar" },
-            { nome: "Folia da Criançada", dataIso: "2024-01-19", dataFmt: "19/01 (Sexta)", hora: "17h", bairro: "Siqueira", local: "Rua Jardim do Éden" },
-            { nome: "Galo do Jardim América", dataIso: "2024-01-19", dataFmt: "19/01 (Sexta)", hora: "18h", bairro: "Jardim América", local: "Praça da Caixa D'água" },
-            { nome: "Kuekão de Kouro", dataIso: "2024-01-19", dataFmt: "19/01 (Sexta)", hora: "18h", bairro: "Pici", local: "Rua Maranhão" },
-            { nome: "Bloco KB+1", dataIso: "2024-01-19", dataFmt: "19/01 (Sexta)", hora: "19h", bairro: "Jacarecanga", local: "Rua Padre Mororó" },
-            { nome: "Banda do Periquito da Madame", dataIso: "2024-01-20", dataFmt: "20/01 (Sábado)", hora: "15h", bairro: "Centro", local: "Mercado dos Pinhões" },
-            { nome: "Doido é Tu", dataIso: "2024-01-20", dataFmt: "20/01 (Sábado)", hora: "17h", bairro: "Rodolfo Teófilo", local: "Praça da Areninha" },
-            { nome: "Cachorra Magra", dataIso: "2024-01-20", dataFmt: "20/01 (Sábado)", hora: "18h30", bairro: "Benfica", local: "Rua Marechal Deodoro" },
-            { nome: "Farra na Jangada", dataIso: "2024-01-21", dataFmt: "21/01 (Domingo)", hora: "16h30", bairro: "Centro", local: "Praça dos Leões" },
-            { nome: "Tambores Carnavalesco", dataIso: "2024-01-21", dataFmt: "21/01 (Domingo)", hora: "17h", bairro: "Praia de Iracema", local: "Passarela do Dragão" },
-            { nome: "Amigos da Folia", dataIso: "2024-01-23", dataFmt: "23/01 (Terça)", hora: "08h", bairro: "Jardim das Oliveiras", local: "Rua Beija Flor" },
-            { nome: "Matuto Folia", dataIso: "2024-01-25", dataFmt: "25/01 (Quinta)", hora: "17h", bairro: "Jardim Guanabara", local: "Rua Pierre Luz" },
-            { nome: "Me Ache Folia", dataIso: "2024-01-25", dataFmt: "25/01 (Quinta)", hora: "17h", bairro: "Antônio Bezerra", local: "Praça Joaquim Nogueira" },
-            { nome: "Turma do Mamão", dataIso: "2024-01-25", dataFmt: "25/01 (Quinta)", hora: "19h", bairro: "Moura Brasil", local: "Praça dos Navegantes" },
-            { nome: "Nazaré Folia Kids", dataIso: "2024-01-26", dataFmt: "26/01 (Sexta)", hora: "17h", bairro: "Siqueira", local: "Rua Padre Palhano" },
-            { nome: "Filhos da Fafá", dataIso: "2024-01-26", dataFmt: "26/01 (Sexta)", hora: "17h", bairro: "Ellery", local: "Rua Capitão Nestor Góis" },
-            { nome: "Jardim Folia", dataIso: "2024-01-26", dataFmt: "26/01 (Sexta)", hora: "17h", bairro: "Jardim das Oliveiras", local: "Praça N. Sra. Aparecida" },
-            { nome: "Parque Folia", dataIso: "2024-01-26", dataFmt: "26/01 (Sexta)", hora: "19h", bairro: "Parque São José", local: "Rua Costa Freire" },
-            { nome: "Me Chama que Eu Vou", dataIso: "2024-01-26", dataFmt: "26/01 (Sexta)", hora: "19h", bairro: "Antônio Bezerra", local: "Travessa Ana Julião" },
-            { nome: "Turminha da Folia", dataIso: "2024-01-27", dataFmt: "27/01 (Sábado)", hora: "16h", bairro: "Monte Castelo", local: "Bosque dos Ferroviários" },
-            { nome: "Mata Galinha", dataIso: "2024-01-27", dataFmt: "27/01 (Sábado)", hora: "16h", bairro: "Dias Macêdo", local: "Praça Central" },
-            { nome: "Vem no Trenzinho", dataIso: "2024-01-27", dataFmt: "27/01 (Sábado)", hora: "16h", bairro: "Vila do Mar", local: "Rua Estevão de Campos" },
-            { nome: "Unidos do Morro", dataIso: "2024-01-27", dataFmt: "27/01 (Sábado)", hora: "19h", bairro: "Moura Brasil", local: "Rua do Trilho" },
-            { nome: "Eu Quero Muito Mais", dataIso: "2024-01-28", dataFmt: "28/01 (Domingo)", hora: "18h", bairro: "Conjunto Ceará", local: "Espaço Celc" },
-            { nome: "Pré Carnaval Da Periferia", dataIso: "2024-01-29", dataFmt: "29/01 (Segunda)", hora: "18h", bairro: "Siqueira", local: "Comunidade Parque Nazaré" },
-            { nome: "Viva Terezinha", dataIso: "2024-01-30", dataFmt: "30/01 (Terça)", hora: "15h", bairro: "Jardim das Oliveiras", local: "Rua Beija Flor" },
-            { nome: "Filhos na Folia", dataIso: "2024-01-30", dataFmt: "30/01 (Terça)", hora: "18h", bairro: "Jardim das Oliveiras", local: "Polo de Lazer Tancredo Neves" },
-            { nome: "Pré-Carnaval Jd. América", dataIso: "2024-01-31", dataFmt: "31/01 (Quarta)", hora: "16h", bairro: "Jardim América", local: "Praça do Jardim América" },
-            { nome: "Zumbeira Kids", dataIso: "2024-02-01", dataFmt: "01/02 (Quinta)", hora: "16h", bairro: "Jacarecanga", local: "Areninha do Pirambu" },
-            { nome: "Bloco Crocodilo", dataIso: "2024-02-01", dataFmt: "01/02 (Quinta)", hora: "17h", bairro: "Farias Brito", local: "Praça Otávio Bonfim" },
-            { nome: "D. Rocha Folia", dataIso: "2024-02-01", dataFmt: "01/02 (Quinta)", hora: "18h", bairro: "Demócrito Rocha", local: "Rua Pedro Muniz" },
-            { nome: "Caneco Cheio", dataIso: "2024-02-01", dataFmt: "01/02 (Quinta)", hora: "19h", bairro: "Pirambu", local: "Calçadão da Areninha" },
-            { nome: "Jaca Folia", dataIso: "2024-02-01", dataFmt: "01/02 (Quinta)", hora: "19h", bairro: "Jacarecanga", local: "Rua Jacinto de Matos" },
-            { nome: "Kururu da Lagoa", dataIso: "2024-02-01", dataFmt: "01/02 (Quinta)", hora: "19h", bairro: "Sabiaguaba", local: "Rua Waldemar Tavares" },
-            { nome: "Paraguai Folia", dataIso: "2024-02-02", dataFmt: "02/02 (Sexta)", hora: "18h", bairro: "Jardim Iracema", local: "Rua Rio Paraguai" },
-            { nome: "Zé Moringa", dataIso: "2024-02-03", dataFmt: "03/02 (Sábado)", hora: "17h", bairro: "Jardim Guanabara", local: "Rua Pierre Luz" },
-            { nome: "Turminha da Folia", dataIso: "2024-02-03", dataFmt: "03/02 (Sábado)", hora: "16h", bairro: "Rodolfo Teófilo", local: "Areninha" },
-            { nome: "Farra na Jangada", dataIso: "2024-02-04", dataFmt: "04/02 (Domingo)", hora: "16h30", bairro: "Praia de Iracema", local: "Poço da Draga" },
-            { nome: "Turminha da Folia", dataIso: "2024-02-04", dataFmt: "04/02 (Domingo)", hora: "16h", bairro: "Parquelândia", local: "Praça Ari de Sá" },
-            { nome: "Meninada Território da Paz", dataIso: "2024-02-07", dataFmt: "07/02 (Quarta)", hora: "18h", bairro: "Siqueira", local: "Praça Mais Infância" },
-            { nome: "Bloco Girassol", dataIso: "2024-01-21", dataFmt: "21/01 (Domingo)", hora: "16h", bairro: "Meireles", local: "Bar da Mocinha" },
-            { nome: "Bloco Girassol", dataIso: "2024-01-28", dataFmt: "28/01 (Domingo)", hora: "16h", bairro: "Meireles", local: "Bar da Mocinha" },
-            { nome: "Bloco Girassol", dataIso: "2024-02-04", dataFmt: "04/02 (Domingo)", hora: "16h", bairro: "Meireles", local: "Bar da Mocinha" },
-            { nome: "Farra na Jangada", dataIso: "2024-01-28", dataFmt: "28/01 (Domingo)", hora: "16h30", bairro: "Centro", local: "Mercado dos Pinhões" },
-            { nome: "Farra na Jangada", dataIso: "2024-02-13", dataFmt: "13/02 (Terça)", hora: "16h30", bairro: "Benfica", local: "Praça João Gentil" }
-        ];
+  {
+    "nome": "Fundo de Quintal",
+    "dataIso": "2026-01-16",
+    "dataFmt": "16/01 (Sexta)",
+    "hora": "21h",
+    "bairro": "Centro",
+    "local": "Praça do Ferreira"
+  },
+  {
+    "nome": "Banda Eva",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "20h",
+    "bairro": "Barra do Ceará",
+    "local": "Barra do Ceará"
+  },
+  {
+    "nome": "Dudu Nobre",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "20h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+{
+    "nome": "Tereza Cristina",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "20h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "O Kannalha",
+    "dataIso": "2026-01-31",
+    "dataFmt": "31/01 (Sábado)",
+    "hora": "18h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Baiana System",
+    "dataIso": "2026-01-31",
+    "dataFmt": "31/01 (Sábado)",
+    "hora": "20h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Joelma",
+    "dataIso": "2026-02-07",
+    "dataFmt": "07/02 (Sábado)",
+    "hora": "20h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Homenagem ao Macaúba do Bandolim",
+    "dataIso": "2026-02-14",
+    "dataFmt": "14/02 (Sexta)",
+    "hora": "18h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Arlindinho",
+    "dataIso": "2026-02-14",
+    "dataFmt": "14/02 (Sexta)",
+    "hora": "20h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Noda de Caju",
+    "dataIso": "2026-02-15",
+    "dataFmt": "15/02 (Domingo)",
+    "hora": "20h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Tarcísio do Acordeon",
+    "dataIso": "2026-02-15",
+    "dataFmt": "15/02 (Domingo)",
+    "hora": "22h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Olodum",
+    "dataIso": "2026-02-17",
+    "dataFmt": "17/02 (Terça)",
+    "hora": "22h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Chico César",
+    "dataIso": "2026-02-17",
+    "dataFmt": "17/02 (Terça)",
+    "hora": "01h",
+    "bairro": "Centro",
+    "local": "Av. Domingos Olímpio"
+  },
+  {
+    "nome": "Wiu",
+    "dataIso": "2026-02-16",
+    "dataFmt": "16/02 (Segunda)",
+    "hora": "20h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Djonga",
+    "dataIso": "2026-02-16",
+    "dataFmt": "16/02 (Segunda)",
+    "hora": "22h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Jorge Aragão",
+    "dataIso": "2026-02-16",
+    "dataFmt": "16/02 (Segunda)",
+    "hora": "01h",
+    "bairro": "Centro",
+    "local": "Av. Domingos Olímpio"
+  }
+];
 
         eventos.sort((a, b) => a.dataIso.localeCompare(b.dataIso));
 
