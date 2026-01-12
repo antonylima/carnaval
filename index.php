@@ -867,7 +867,7 @@ require_once 'visitas.php';
                 return;
             }
 
-            countDiv.textContent = `${items.length} blocos encontrados`;
+            countDiv.textContent = `${items.length} eventos`;
 
             items.forEach(item => {
                 const card = document.createElement('div');
