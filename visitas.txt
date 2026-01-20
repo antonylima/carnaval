@@ -1,0 +1,94 @@
+TOTAL DE VISITAS: 45
+
+138.36.224.156 | 20/01/2026 | 15:12:03 | Desconhecido | Desktop
+
+179.224.177.50 | 20/01/2026 | 14:13:05 | Desconhecido | Android
+
+66.102.8.238 | 20/01/2026 | 14:07:48 | Desconhecido | Android
+
+66.102.8.236 | 20/01/2026 | 14:07:48 | Desconhecido | Android
+
+66.249.85.108 | 20/01/2026 | 14:07:46 | Desconhecido | Android
+
+179.224.177.50 | 20/01/2026 | 14:07:43 | Desconhecido | Android
+
+138.36.224.156 | 17/01/2026 | 13:45:09 | Desconhecido | Android
+
+179.224.186.158 | 16/01/2026 | 21:34:16 | Desconhecido | Android
+
+69.63.189.116 | 16/01/2026 | 20:32:12 | Desconhecido | Desktop
+
+34.213.24.70 | 16/01/2026 | 20:31:39 | Desconhecido | Android
+
+138.36.224.156 | 16/01/2026 | 16:18:45 | Desconhecido | Android
+
+138.36.224.156 | 16/01/2026 | 15:46:19 | Desconhecido | Desktop
+
+173.252.127.115 | 16/01/2026 | 14:55:44 | Desconhecido | Android
+
+173.252.70.31 | 16/01/2026 | 14:55:42 | Desconhecido | Desktop
+
+177.52.147.239 | 16/01/2026 | 08:14:10 | Desconhecido | iPhone
+
+66.102.8.235 | 15/01/2026 | 19:37:39 | Desconhecido | Android
+
+66.249.83.107 | 15/01/2026 | 19:37:39 | Desconhecido | Android
+
+66.249.85.107 | 15/01/2026 | 19:37:38 | Desconhecido | Android
+
+45.168.42.170 | 14/01/2026 | 15:30:57 | Desconhecido | iPhone
+
+187.18.140.234 | 14/01/2026 | 08:44:17 | Desconhecido | Android
+
+187.18.140.234 | 14/01/2026 | 08:36:39 | Desconhecido | Android
+
+187.18.140.234 | 14/01/2026 | 08:33:26 | Desconhecido | Android
+
+187.18.140.234 | 13/01/2026 | 18:57:26 | Desconhecido | Android
+
+177.51.34.99 | 13/01/2026 | 18:43:54 | Desconhecido | iPhone
+
+45.168.42.170 | 13/01/2026 | 15:06:46 | Desconhecido | iPhone
+
+45.168.42.170 | 13/01/2026 | 14:29:21 | Desconhecido | iPhone
+
+45.168.42.170 | 13/01/2026 | 14:26:50 | Desconhecido | iPhone
+
+66.249.88.100 | 13/01/2026 | 13:58:40 | Desconhecido | Android
+
+66.249.88.100 | 13/01/2026 | 13:58:40 | Desconhecido | Android
+
+66.249.85.109 | 13/01/2026 | 13:58:38 | Desconhecido | Android
+
+31.13.127.13 | 13/01/2026 | 13:34:35 | Desconhecido | Desktop
+
+187.18.140.234 | 13/01/2026 | 03:56:45 | Desconhecido | Android
+
+168.121.25.148 | 12/01/2026 | 19:46:02 | Desconhecido | Android
+
+177.25.114.157 | 12/01/2026 | 19:04:21 | Desconhecido | Android
+
+177.51.34.40 | 12/01/2026 | 18:54:34 | Desconhecido | iPhone
+
+177.51.32.183 | 12/01/2026 | 18:52:57 | Desconhecido | iPhone
+
+177.51.34.40 | 12/01/2026 | 18:52:10 | Desconhecido | iPhone
+
+173.252.127.62 | 12/01/2026 | 14:30:23 | Desconhecido | Desktop
+
+179.224.190.83 | 12/01/2026 | 14:25:26 | Desconhecido | Android
+
+177.25.114.109 | 12/01/2026 | 14:17:50 | Desconhecido | Android
+
+191.247.5.203 | 12/01/2026 | 14:13:32 | Desconhecido | Android
+
+173.252.127.11 | 12/01/2026 | 14:07:38 | Desconhecido | Desktop
+
+173.252.79.9 | 12/01/2026 | 14:07:36 | Desconhecido | Desktop
+
+69.171.231.115 | 12/01/2026 | 14:06:11 | Desconhecido | Desktop
+
+69.171.234.11 | 12/01/2026 | 14:04:46 | Desconhecido | Desktop
+
+
+

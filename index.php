@@ -674,21 +674,55 @@ require_once 'visitas.php';
 
     <script>
         const eventos = [
+ 
   {
-    "nome": "Fundo de Quintal",
+    "nome": "Theresa Rachel",
+    "dataIso": "2026-01-16",
+    "dataFmt": "16/01 (Sexta)",
+    "hora": "18h",
+    "bairro": "Centro",
+    "local": "Praça do Ferreira"
+  },
+  {
+    "nome": "Mais Melanina",
+    "dataIso": "2026-01-16",
+    "dataFmt": "16/01 (Sexta)",
+    "hora": "19h30",
+    "bairro": "Centro",
+    "local": "Praça do Ferreira"
+  },
+{
+    "nome": "Fundo de Quital",
     "dataIso": "2026-01-16",
     "dataFmt": "16/01 (Sexta)",
     "hora": "21h",
     "bairro": "Centro",
     "local": "Praça do Ferreira"
   },
+
   {
-    "nome": "Banda Eva",
+    "nome": "DJ Kaká de Paula",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "17h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "DTF",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "18h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "DJ Kaká de Paula",
     "dataIso": "2026-01-17",
     "dataFmt": "17/01 (Sábado)",
     "hora": "20h",
-    "bairro": "Barra do Ceará",
-    "local": "Barra do Ceará"
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
   },
   {
     "nome": "Dudu Nobre",
@@ -697,6 +731,102 @@ require_once 'visitas.php';
     "hora": "20h30",
     "bairro": "Praia de Iracema",
     "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "DJ Kaká de Paula",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "22h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Camaleões do Vila",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "22h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Concentração de baterias",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "15h",
+    "bairro": "Praia de Iracema",
+    "local": "Av. Beira-Mar com Av. Barão de Studart"
+  },
+  {
+    "nome": "Unidos da Cachorra",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "16h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Sambamor",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "16h45",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Baqueta Clube De Ritmistas",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "17h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Bonde Batuque",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "18h15",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Camaleões do Vila",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "19h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "DJ Lolost",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "17h",
+    "bairro": "Barra do Ceará",
+    "local": "Barra do Ceará - Marco Zero"
+  },
+  {
+    "nome": "Pimenta Malagueta",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "18h",
+    "bairro": "Barra do Ceará",
+    "local": "Barra do Ceará - Marco Zero"
+  },
+  {
+    "nome": "DJ Lolost",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "19h30",
+    "bairro": "Barra do Ceará",
+    "local": "Barra do Ceará - Marco Zero"
+  },
+  {
+    "nome": "Banda Eva",
+    "dataIso": "2026-01-17",
+    "dataFmt": "17/01 (Sábado)",
+    "hora": "20h",
+    "bairro": "Barra do Ceará",
+    "local": "Barra do Ceará - Marco Zero"
   },
 {
     "nome": "Tereza Cristina",
@@ -801,6 +931,414 @@ require_once 'visitas.php';
     "hora": "01h",
     "bairro": "Centro",
     "local": "Av. Domingos Olímpio"
+  },
+  {
+    "nome": "Luxo da Aldeia",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "19h",
+    "bairro": "Centro",
+    "local": "Mercado dos Pinhões"
+  },
+  {
+    "nome": "Raízes do Grió",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "18h",
+    "bairro": "Centro",
+    "local": "Praça dos Leões"
+  },
+  {
+    "nome": "Caravana Cultural",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "19h30",
+    "bairro": "Centro",
+    "local": "Praça dos Leões"
+  },
+  {
+    "nome": "Maracatu Solar",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "21h",
+    "bairro": "Centro",
+    "local": "Praça dos Leões"
+  },
+  {
+    "nome": "Diana Franco",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "18h",
+    "bairro": "Aerolândia",
+    "local": "Mercado da Aerolândia"
+  },
+  {
+    "nome": "Vanin e Nicinha",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "19h20",
+    "bairro": "Aerolândia",
+    "local": "Mercado da Aerolândia"
+  },
+  {
+    "nome": "Banda Amor de Cristal",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "20h40",
+    "bairro": "Aerolândia",
+    "local": "Mercado da Aerolândia"
+  },
+  {
+    "nome": "Vannick Belchior",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "18h",
+    "bairro": "Praia de Iracema",
+    "local": "Centro Cultural Belchior"
+  },
+  {
+    "nome": "Iracema Bode Beat",
+    "dataIso": "2026-01-23",
+    "dataFmt": "23/01 (Sexta)",
+    "hora": "19h30",
+    "bairro": "Praia de Iracema",
+    "local": "Centro Cultural Belchior"
+  },
+  {
+    "nome": "Gildomar Marinho",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h20",
+    "bairro": "Parque Dois Irmãos",
+    "local": "Parque Dois Irmãos"
+  },
+  {
+    "nome": "Fabinho Varela",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "19h40",
+    "bairro": "Parque Dois Irmãos",
+    "local": "Parque Dois Irmãos"
+  },
+  {
+    "nome": "Jean Dumont e Banda Farra Dusbons",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "21h",
+    "bairro": "Parque Dois Irmãos",
+    "local": "Parque Dois Irmãos"
+  },
+  {
+    "nome": "Parahyba e Cia Bate Palmas",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h20",
+    "bairro": "Jangurussu",
+    "local": "Praça do Cuca Jangurussu"
+  },
+  {
+    "nome": "Iago Gouveia",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "19h40",
+    "bairro": "Jangurussu",
+    "local": "Praça do Cuca Jangurussu"
+  },
+  {
+    "nome": "Couros e Metais",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "21h",
+    "bairro": "Jangurussu",
+    "local": "Praça do Cuca Jangurussu"
+  },
+  {
+    "nome": "Gilson Duty",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h20",
+    "bairro": "Mondubim",
+    "local": "Lagoa do Mondubim"
+  },
+  {
+    "nome": "Allan Brasil",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "19h40",
+    "bairro": "Mondubim",
+    "local": "Lagoa do Mondubim"
+  },
+  {
+    "nome": "Robertinho do Acordeon",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "21h",
+    "bairro": "Mondubim",
+    "local": "Lagoa do Mondubim"
+  },
+  {
+    "nome": "Bloco Num Ispaia Senão Ienche",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h",
+    "bairro": "Praia de Iracema",
+    "local": "Mocinha"
+  },
+  {
+    "nome": "DJ Maria Tavares",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "17h",
+    "bairro": "Centro",
+    "local": "Mercado dos Pinhões"
+  },
+  {
+    "nome": "Dujambu",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h20",
+    "bairro": "Centro",
+    "local": "Mercado dos Pinhões"
+  },
+  {
+    "nome": "Bloco Baba de Camelo",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "19h40",
+    "bairro": "Centro",
+    "local": "Mercado dos Pinhões"
+  },
+  {
+    "nome": "Vanessa A Cantora",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "21h",
+    "bairro": "Centro",
+    "local": "Mercado dos Pinhões"
+  },
+  {
+    "nome": "Concentra Mas Não Sai",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h",
+    "bairro": "Centro",
+    "local": "Praça dos Leões"
+  },
+  {
+    "nome": "DJ Kinas",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "17h",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Banda da Nega",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h20",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Di Ferreira",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "19h40",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Shirlene Aguiar",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "21h",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Projeto Carambola (Infantil)",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "17h",
+    "bairro": "Presidente Kennedy",
+    "local": "Parque Rachel de Queiroz"
+  },
+  {
+    "nome": "Betto Lins",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h",
+    "bairro": "Presidente Kennedy",
+    "local": "Parque Rachel de Queiroz"
+  },
+  {
+    "nome": "Meu bloco vai sair na rua - Fábio Daniel",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "19h20",
+    "bairro": "Presidente Kennedy",
+    "local": "Parque Rachel de Queiroz"
+  },
+  {
+    "nome": "Bárbara Sena e o Bloco das Sardinhas",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "21h",
+    "bairro": "Presidente Kennedy",
+    "local": "Parque Rachel de Queiroz"
+  },
+  {
+    "nome": "Concentração de Blocos",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "15h",
+    "bairro": "Meireles",
+    "local": "Av Beira Mar com Av. Barão de Studart"
+  },
+  {
+    "nome": "Sambamor",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "16h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Camaleões do Vila",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "16h45",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Unidos da Cachorra",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "17h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Baqueta Clube de Ritmistas",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h15",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "Bonde Batuque (Cortejo)",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "19h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterro da Praia de Iracema"
+  },
+  {
+    "nome": "DJ Bugzinha",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "17h",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Mona Mendes e Grupo Essas Mulheres",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "18h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Teresa Cristina - Jessé: As canções de Zeca Pagodinho",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "20h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "Bonde Batuque (Palco)",
+    "dataIso": "2026-01-24",
+    "dataFmt": "24/01 (Sábado)",
+    "hora": "22h30",
+    "bairro": "Praia de Iracema",
+    "local": "Aterrinho da Praia de Iracema"
+  },
+  {
+    "nome": "DJ Lola Mel",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "13h",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Montage",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "14h30",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Luiza Nobel - Baile Preto Carnaval",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "16h",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Gabvic",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "17h30",
+    "bairro": "Benfica",
+    "local": "Praça da Gentilândia"
+  },
+  {
+    "nome": "Gal Saldanha (Infantil)",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "09h",
+    "bairro": "Centro",
+    "local": "Cidade da Criança"
+  },
+  {
+    "nome": "CantaKids (Infantil)",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "10h40",
+    "bairro": "Centro",
+    "local": "Cidade da Criança"
+  },
+  {
+    "nome": "Grupo Murmurando",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "10h",
+    "bairro": "Centro",
+    "local": "Raimundo do Queijo"
+  },
+  {
+    "nome": "Samba de Roda",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "11h30",
+    "bairro": "Centro",
+    "local": "Raimundo do Queijo"
+  },
+  {
+    "nome": "Frevilhando",
+    "dataIso": "2026-01-25",
+    "dataFmt": "25/01 (Domingo)",
+    "hora": "13h",
+    "bairro": "Centro",
+    "local": "Raimundo do Queijo"
   }
 ];
 
