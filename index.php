@@ -4,1413 +4,1423 @@ require_once 'visitas.php';
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carnaval Fortaleza 2026</title>
-    <style>
-        :root {
-            --primary: #FF6B35;
-            --secondary: #F7B801;
-            --tertiary: #00B4D8;
-            --purple: #9D4EDD;
-            --pink: #FF006E;
-            --background: #FFF8E7;
-            --card-bg: #ffffff;
-            --text: #1A1423;
-            --accent: #FFD60A;
-            --gradient-start: #FF006E;
-            --gradient-end: #F7B801;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--background);
-            color: var(--text);
-            padding-bottom: 30px;
-            min-height: 100vh;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--gradient-start), var(--primary), var(--secondary), var(--gradient-end));
-            color: white;
-            padding: clamp(20px, 5vw, 40px) 20px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(255, 255, 255, 0.05) 10px,
-                    rgba(255, 255, 255, 0.05) 20px);
-            animation: confetti 20s linear infinite;
-        }
-
-        @keyframes confetti {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            100% {
-                transform: translate(50%, 50%) rotate(360deg);
-            }
-        }
-
-        /* Adereços de Carnaval */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .confetti:nth-child(1) {
-            left: 10%;
-            animation: fall 3s linear infinite;
-            animation-delay: 0s;
-        }
-
-        .confetti:nth-child(2) {
-            left: 20%;
-            animation: fall 3.5s linear infinite;
-            animation-delay: 0.5s;
-        }
-
-        .confetti:nth-child(3) {
-            left: 30%;
-            animation: fall 3.2s linear infinite;
-            animation-delay: 1s;
-        }
-
-        .confetti:nth-child(4) {
-            left: 40%;
-            animation: fall 3.8s linear infinite;
-            animation-delay: 0.3s;
-        }
-
-        .confetti:nth-child(5) {
-            left: 50%;
-            animation: fall 3.3s linear infinite;
-            animation-delay: 0.8s;
-        }
-
-        .confetti:nth-child(6) {
-            left: 60%;
-            animation: fall 3.6s linear infinite;
-            animation-delay: 0.2s;
-        }
-
-        .confetti:nth-child(7) {
-            left: 70%;
-            animation: fall 3.4s linear infinite;
-            animation-delay: 0.6s;
-        }
-
-        .confetti:nth-child(8) {
-            left: 80%;
-            animation: fall 3.7s linear infinite;
-            animation-delay: 0.4s;
-        }
-
-        .confetti:nth-child(9) {
-            left: 90%;
-            animation: fall 3.1s linear infinite;
-            animation-delay: 0.9s;
-        }
-
-        @keyframes fall {
-            0% {
-                top: -10%;
-                transform: translateX(0) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                top: 110%;
-                transform: translateX(100px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        .decoracao-topo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 40px;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        .mascara-svg {
-            position: absolute;
-            opacity: 0.15;
-            pointer-events: none;
-        }
-
-        .mascara-1 {
-            top: 20px;
-            left: 5%;
-            width: 60px;
-            transform: rotate(-15deg);
-        }
-
-        .mascara-2 {
-            top: 40px;
-            right: 8%;
-            width: 50px;
-            transform: rotate(20deg);
-        }
-
-        .mascara-3 {
-            bottom: 30px;
-            left: 10%;
-            width: 55px;
-            transform: rotate(10deg);
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(5deg);
-            }
-        }
-
-        .container .mascara-svg {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        header h1 {
-            margin-bottom: 8px;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            line-height: 1.2;
-            position: relative;
-            z-index: 1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        header p {
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: clamp(15px, 3vw, 20px);
-        }
-
-        /* Filtros */
-        .filters {
-            background: white;
-            padding: clamp(15px, 3vw, 20px);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            margin-top: clamp(-20px, -4vw, -30px);
-            display: grid;
-            gap: 15px;
-            grid-template-columns: 1fr;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .filters::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .filters::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(247, 184, 1, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .filter-group label {
-            font-size: clamp(0.85rem, 2vw, 0.9rem);
-            font-weight: bold;
-            margin-bottom: 6px;
-            color: var(--secondary);
-        }
-
-        select {
-            padding: clamp(10px, 2vw, 12px);
-            border: 2px solid var(--accent);
-            border-radius: 8px;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            outline: none;
-            transition: border-color 0.3s;
-            background: white;
-            width: 100%;
-        }
-
-        select:focus {
-            border-color: var(--secondary);
-        }
-
-        .btn-reset {
-            padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
-            background: linear-gradient(135deg, var(--primary), var(--pink));
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            transition: all 0.3s;
-            width: 100%;
-            margin-top: 5px;
-            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-reset:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
-        }
-
-        .btn-reset:active {
-            transform: scale(0.98);
-        }
-
-        #results-count {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #666;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            text-align: center;
-        }
-
-        /* Grid de Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
-            gap: clamp(15px, 3vw, 20px);
-            margin-top: clamp(20px, 4vw, 30px);
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-left: 5px solid var(--primary);
-            border-top: 2px solid var(--accent);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            opacity: 0.1;
-            border-radius: 0 0 0 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .card:active {
-            transform: translateY(-2px);
-        }
-
-        .card-header {
-            padding: clamp(12px, 3vw, 15px);
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-
-        .card-date {
-            font-size: clamp(0.75rem, 2vw, 0.8rem);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--secondary);
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .card-title {
-            font-size: clamp(1.1rem, 3vw, 1.25rem);
-            font-weight: bold;
-            color: var(--primary);
-            line-height: 1.3;
-        }
-
-        .card-body {
-            padding: clamp(12px, 3vw, 15px);
-            flex-grow: 1;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            gap: 8px;
-        }
-
-        .info-icon {
-            flex-shrink: 0;
-            color: var(--primary);
-        }
-
-        .info-text {
-            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
-            color: #555;
-            line-height: 1.4;
-        }
-
-        .info-label {
-            font-weight: bold;
-            display: block;
-            font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-            color: #888;
-            margin-bottom: 2px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 5px 10px;
-            background: linear-gradient(135deg, var(--tertiary), var(--purple));
-            color: white;
-            border-radius: 20px;
-            font-size: clamp(0.75rem, 2vw, 0.8rem);
-            font-weight: bold;
-            margin-top: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .btn-action {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: bold;
-            transition: transform 0.2s, opacity 0.2s;
-            gap: 6px;
-        }
-
-        .btn-action:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .btn-maps {
-            background-color: #34A853;
-            color: white;
-        }
-
-        .btn-uber {
-            background-color: #000000;
-            color: white;
-        }
-
-        .empty-state {
-            text-align: center;
-            grid-column: 1 / -1;
-            padding: clamp(30px, 8vw, 50px);
-            color: #888;
-        }
-
-        .empty-state h3 {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            line-height: 1.4;
-        }
-
-        /* Media Queries para melhor controle */
-        @media (min-width: 480px) {
-            .filters {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .btn-reset {
-                grid-column: 1 / -1;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .filters {
-                grid-template-columns: 1fr 1fr auto;
-                align-items: end;
-            }
-
-            .btn-reset {
-                grid-column: auto;
-                width: auto;
-                min-width: 150px;
-            }
-
-            #results-count {
-                text-align: left;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
-        }
-
-        /* Melhorias de touch para mobile */
-        @media (hover: none) and (pointer: coarse) {
-
-            select,
-            .btn-reset {
-                min-height: 44px;
-            }
-
-            .card:hover {
-                transform: none;
-            }
-        }
-
-        /* Modo escuro (opcional) */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background: #1a1a2e;
-                --card-bg: #16213e;
-                --text: #eaeaea;
-            }
-
-            body {
-                background-color: var(--background);
-                color: var(--text);
-            }
-
-            .filters,
-            .card {
-                background: var(--card-bg);
-            }
-
-            select {
-                background: var(--card-bg);
-                color: var(--text);
-            }
-
-            .info-text {
-                color: #bbb;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carnaval Fortaleza 2026</title>
+  <style>
+    :root {
+      --primary: #FF6B35;
+      --secondary: #F7B801;
+      --tertiary: #00B4D8;
+      --purple: #9D4EDD;
+      --pink: #FF006E;
+      --background: #FFF8E7;
+      --card-bg: #ffffff;
+      --text: #1A1423;
+      --accent: #FFD60A;
+      --gradient-start: #FF006E;
+      --gradient-end: #F7B801;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      padding-bottom: 30px;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--gradient-start), var(--primary), var(--secondary), var(--gradient-end));
+      color: white;
+      padding: clamp(20px, 5vw, 40px) 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(45deg,
+          transparent,
+          transparent 10px,
+          rgba(255, 255, 255, 0.05) 10px,
+          rgba(255, 255, 255, 0.05) 20px);
+      animation: confetti 20s linear infinite;
+    }
+
+    @keyframes confetti {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(50%, 50%) rotate(360deg);
+      }
+    }
+
+    /* Adereços de Carnaval */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .confetti:nth-child(1) {
+      left: 10%;
+      animation: fall 3s linear infinite;
+      animation-delay: 0s;
+    }
+
+    .confetti:nth-child(2) {
+      left: 20%;
+      animation: fall 3.5s linear infinite;
+      animation-delay: 0.5s;
+    }
+
+    .confetti:nth-child(3) {
+      left: 30%;
+      animation: fall 3.2s linear infinite;
+      animation-delay: 1s;
+    }
+
+    .confetti:nth-child(4) {
+      left: 40%;
+      animation: fall 3.8s linear infinite;
+      animation-delay: 0.3s;
+    }
+
+    .confetti:nth-child(5) {
+      left: 50%;
+      animation: fall 3.3s linear infinite;
+      animation-delay: 0.8s;
+    }
+
+    .confetti:nth-child(6) {
+      left: 60%;
+      animation: fall 3.6s linear infinite;
+      animation-delay: 0.2s;
+    }
+
+    .confetti:nth-child(7) {
+      left: 70%;
+      animation: fall 3.4s linear infinite;
+      animation-delay: 0.6s;
+    }
+
+    .confetti:nth-child(8) {
+      left: 80%;
+      animation: fall 3.7s linear infinite;
+      animation-delay: 0.4s;
+    }
+
+    .confetti:nth-child(9) {
+      left: 90%;
+      animation: fall 3.1s linear infinite;
+      animation-delay: 0.9s;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        top: 110%;
+        transform: translateX(100px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .decoracao-topo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .mascara-svg {
+      position: absolute;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .mascara-1 {
+      top: 20px;
+      left: 5%;
+      width: 60px;
+      transform: rotate(-15deg);
+    }
+
+    .mascara-2 {
+      top: 40px;
+      right: 8%;
+      width: 50px;
+      transform: rotate(20deg);
+    }
+
+    .mascara-3 {
+      bottom: 30px;
+      left: 10%;
+      width: 55px;
+      transform: rotate(10deg);
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(5deg);
+      }
+    }
+
+    .container .mascara-svg {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    header h1 {
+      margin-bottom: 8px;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    header p {
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(15px, 3vw, 20px);
+    }
+
+    /* Filtros */
+    .filters {
+      background: white;
+      padding: clamp(15px, 3vw, 20px);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-top: clamp(-20px, -4vw, -30px);
+      display: grid;
+      gap: 15px;
+      grid-template-columns: 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filters::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .filters::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(247, 184, 1, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .filter-group label {
+      font-size: clamp(0.85rem, 2vw, 0.9rem);
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: var(--secondary);
+    }
+
+    select {
+      padding: clamp(10px, 2vw, 12px);
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      outline: none;
+      transition: border-color 0.3s;
+      background: white;
+      width: 100%;
+    }
+
+    select:focus {
+      border-color: var(--secondary);
+    }
+
+    .btn-reset {
+      padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
+      background: linear-gradient(135deg, var(--primary), var(--pink));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      transition: all 0.3s;
+      width: 100%;
+      margin-top: 5px;
+      box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-reset:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
+    }
+
+    .btn-reset:active {
+      transform: scale(0.98);
+    }
+
+    #results-count {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #666;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      text-align: center;
+    }
+
+    /* Grid de Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+      gap: clamp(15px, 3vw, 20px);
+      margin-top: clamp(20px, 4vw, 30px);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 5px solid var(--primary);
+      border-top: 2px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      opacity: 0.1;
+      border-radius: 0 0 0 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:active {
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      padding: clamp(12px, 3vw, 15px);
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .card-date {
+      font-size: clamp(0.75rem, 2vw, 0.8rem);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--secondary);
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .card-title {
+      font-size: clamp(1.1rem, 3vw, 1.25rem);
+      font-weight: bold;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .card-body {
+      padding: clamp(12px, 3vw, 15px);
+      flex-grow: 1;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .info-icon {
+      flex-shrink: 0;
+      color: var(--primary);
+    }
+
+    .info-text {
+      font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .info-label {
+      font-weight: bold;
+      display: block;
+      font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+      color: #888;
+      margin-bottom: 2px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      background: linear-gradient(135deg, var(--tertiary), var(--purple));
+      color: white;
+      border-radius: 20px;
+      font-size: clamp(0.75rem, 2vw, 0.8rem);
+      font-weight: bold;
+      margin-top: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .btn-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: bold;
+      transition: transform 0.2s, opacity 0.2s;
+      gap: 6px;
+    }
+
+    .btn-action:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .btn-maps {
+      background-color: #34A853;
+      color: white;
+    }
+
+    .btn-uber {
+      background-color: #000000;
+      color: white;
+    }
+
+    .empty-state {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: clamp(30px, 8vw, 50px);
+      color: #888;
+    }
+
+    .empty-state h3 {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      line-height: 1.4;
+    }
+
+    /* Media Queries para melhor controle */
+    @media (min-width: 480px) {
+      .filters {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn-reset {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .filters {
+        grid-template-columns: 1fr 1fr auto;
+        align-items: end;
+      }
+
+      .btn-reset {
+        grid-column: auto;
+        width: auto;
+        min-width: 150px;
+      }
+
+      #results-count {
+        text-align: left;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      }
+    }
+
+    /* Melhorias de touch para mobile */
+    @media (hover: none) and (pointer: coarse) {
+
+      select,
+      .btn-reset {
+        min-height: 44px;
+      }
+
+      .card:hover {
+        transform: none;
+      }
+    }
+
+    /* Modo escuro (opcional) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #1a1a2e;
+        --card-bg: #16213e;
+        --text: #eaeaea;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text);
+      }
+
+      .filters,
+      .card {
+        background: var(--card-bg);
+      }
+
+      select {
+        background: var(--card-bg);
+        color: var(--text);
+      }
+
+      .info-text {
+        color: #bbb;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Confetes caindo -->
-    <svg class="confetti" viewBox="0 0 10 10">
-        <rect width="10" height="10" fill="#FF6B35" transform="rotate(45 5 5)" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <circle cx="5" cy="5" r="5" fill="#F7B801" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <polygon points="5,0 10,10 0,10" fill="#00B4D8" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <rect width="10" height="10" fill="#9D4EDD" transform="rotate(45 5 5)" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <circle cx="5" cy="5" r="5" fill="#FF006E" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <polygon points="5,0 10,10 0,10" fill="#FFD60A" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <rect width="10" height="10" fill="#00B4D8" transform="rotate(45 5 5)" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <circle cx="5" cy="5" r="5" fill="#FF6B35" />
-    </svg>
-    <svg class="confetti" viewBox="0 0 10 10">
-        <polygon points="5,0 10,10 0,10" fill="#9D4EDD" />
+  <!-- Confetes caindo -->
+  <svg class="confetti" viewBox="0 0 10 10">
+    <rect width="10" height="10" fill="#FF6B35" transform="rotate(45 5 5)" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <circle cx="5" cy="5" r="5" fill="#F7B801" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <polygon points="5,0 10,10 0,10" fill="#00B4D8" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <rect width="10" height="10" fill="#9D4EDD" transform="rotate(45 5 5)" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <circle cx="5" cy="5" r="5" fill="#FF006E" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <polygon points="5,0 10,10 0,10" fill="#FFD60A" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <rect width="10" height="10" fill="#00B4D8" transform="rotate(45 5 5)" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <circle cx="5" cy="5" r="5" fill="#FF6B35" />
+  </svg>
+  <svg class="confetti" viewBox="0 0 10 10">
+    <polygon points="5,0 10,10 0,10" fill="#9D4EDD" />
+  </svg>
+
+  <header>
+    <h1>🎭 CARNAVAL 2026 🎊</h1>
+    <p>Encontre a folia em Fortaleza filtrando por dia e bairro.</p>
+  </header>
+
+  <div class="container">
+    <!-- Máscaras decorativas -->
+    <svg class="mascara-svg mascara-1" viewBox="0 0 100 50" fill="none">
+      <path d="M10,25 Q20,10 35,15 Q50,5 65,15 Q80,10 90,25 Q85,35 75,35 Q65,40 50,35 Q35,40 25,35 Q15,35 10,25 Z"
+        fill="#FF006E" opacity="0.8" />
+      <ellipse cx="30" cy="25" rx="8" ry="10" fill="#1A1423" />
+      <ellipse cx="70" cy="25" rx="8" ry="10" fill="#1A1423" />
+      <path d="M25,20 Q30,18 35,20" stroke="#FFD60A" stroke-width="2" fill="none" />
+      <path d="M65,20 Q70,18 75,20" stroke="#FFD60A" stroke-width="2" fill="none" />
+      <circle cx="28" cy="24" r="2" fill="white" opacity="0.6" />
+      <circle cx="68" cy="24" r="2" fill="white" opacity="0.6" />
     </svg>
 
-    <header>
-        <h1>🎭 CARNAVAL 2026 🎊</h1>
-        <p>Encontre a folia em Fortaleza filtrando por dia e bairro.</p>
-    </header>
+    <svg class="mascara-svg mascara-2" viewBox="0 0 100 50" fill="none">
+      <path d="M10,25 Q20,10 35,15 Q50,5 65,15 Q80,10 90,25 Q85,35 75,35 Q65,40 50,35 Q35,40 25,35 Q15,35 10,25 Z"
+        fill="#9D4EDD" opacity="0.8" />
+      <ellipse cx="30" cy="25" rx="8" ry="10" fill="#1A1423" />
+      <ellipse cx="70" cy="25" rx="8" ry="10" fill="#1A1423" />
+      <path d="M40,15 Q50,10 60,15" stroke="#F7B801" stroke-width="3" fill="none" />
+      <circle cx="28" cy="24" r="2" fill="white" opacity="0.6" />
+      <circle cx="68" cy="24" r="2" fill="white" opacity="0.6" />
+    </svg>
 
-    <div class="container">
-        <!-- Máscaras decorativas -->
-        <svg class="mascara-svg mascara-1" viewBox="0 0 100 50" fill="none">
-            <path d="M10,25 Q20,10 35,15 Q50,5 65,15 Q80,10 90,25 Q85,35 75,35 Q65,40 50,35 Q35,40 25,35 Q15,35 10,25 Z"
-                fill="#FF006E" opacity="0.8" />
-            <ellipse cx="30" cy="25" rx="8" ry="10" fill="#1A1423" />
-            <ellipse cx="70" cy="25" rx="8" ry="10" fill="#1A1423" />
-            <path d="M25,20 Q30,18 35,20" stroke="#FFD60A" stroke-width="2" fill="none" />
-            <path d="M65,20 Q70,18 75,20" stroke="#FFD60A" stroke-width="2" fill="none" />
-            <circle cx="28" cy="24" r="2" fill="white" opacity="0.6" />
-            <circle cx="68" cy="24" r="2" fill="white" opacity="0.6" />
+    <svg class="mascara-svg mascara-3" viewBox="0 0 100 50" fill="none">
+      <path d="M10,25 Q20,10 35,15 Q50,5 65,15 Q80,10 90,25 Q85,35 75,35 Q65,40 50,35 Q35,40 25,35 Q15,35 10,25 Z"
+        fill="#00B4D8" opacity="0.8" />
+      <ellipse cx="30" cy="25" rx="8" ry="10" fill="#1A1423" />
+      <ellipse cx="70" cy="25" rx="8" ry="10" fill="#1A1423" />
+      <path d="M20,30 Q30,28 40,30" stroke="#FFD60A" stroke-width="2" fill="none" />
+      <path d="M60,30 Q70,28 80,30" stroke="#FFD60A" stroke-width="2" fill="none" />
+      <circle cx="28" cy="24" r="2" fill="white" opacity="0.6" />
+      <circle cx="68" cy="24" r="2" fill="white" opacity="0.6" />
+    </svg>
+
+    <div class="filters">
+      <div class="filter-group">
+        <label for="filter-date">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Quando?
+        </label>
+        <select id="filter-date">
+          <option value="">Todas as datas</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="filter-bairro">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="display: inline-block; vertical-align: middle; margin-right: 4px;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Onde? (Bairro)
+        </label>
+        <select id="filter-bairro">
+          <option value="">Todos os bairros</option>
+        </select>
+      </div>
+      <button class="btn-reset" id="btn-reset">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          style="display: inline-block; vertical-align: middle; margin-right: 6px;">
+          <polyline points="1 4 1 10 7 10"></polyline>
+          <polyline points="23 20 23 14 17 14"></polyline>
+          <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
         </svg>
-
-        <svg class="mascara-svg mascara-2" viewBox="0 0 100 50" fill="none">
-            <path d="M10,25 Q20,10 35,15 Q50,5 65,15 Q80,10 90,25 Q85,35 75,35 Q65,40 50,35 Q35,40 25,35 Q15,35 10,25 Z"
-                fill="#9D4EDD" opacity="0.8" />
-            <ellipse cx="30" cy="25" rx="8" ry="10" fill="#1A1423" />
-            <ellipse cx="70" cy="25" rx="8" ry="10" fill="#1A1423" />
-            <path d="M40,15 Q50,10 60,15" stroke="#F7B801" stroke-width="3" fill="none" />
-            <circle cx="28" cy="24" r="2" fill="white" opacity="0.6" />
-            <circle cx="68" cy="24" r="2" fill="white" opacity="0.6" />
-        </svg>
-
-        <svg class="mascara-svg mascara-3" viewBox="0 0 100 50" fill="none">
-            <path d="M10,25 Q20,10 35,15 Q50,5 65,15 Q80,10 90,25 Q85,35 75,35 Q65,40 50,35 Q35,40 25,35 Q15,35 10,25 Z"
-                fill="#00B4D8" opacity="0.8" />
-            <ellipse cx="30" cy="25" rx="8" ry="10" fill="#1A1423" />
-            <ellipse cx="70" cy="25" rx="8" ry="10" fill="#1A1423" />
-            <path d="M20,30 Q30,28 40,30" stroke="#FFD60A" stroke-width="2" fill="none" />
-            <path d="M60,30 Q70,28 80,30" stroke="#FFD60A" stroke-width="2" fill="none" />
-            <circle cx="28" cy="24" r="2" fill="white" opacity="0.6" />
-            <circle cx="68" cy="24" r="2" fill="white" opacity="0.6" />
-        </svg>
-
-        <div class="filters">
-            <div class="filter-group">
-                <label for="filter-date">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        style="display: inline-block; vertical-align: middle; margin-right: 4px;">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    Quando?
-                </label>
-                <select id="filter-date">
-                    <option value="">Todas as datas</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="filter-bairro">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        style="display: inline-block; vertical-align: middle; margin-right: 4px;">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Onde? (Bairro)
-                </label>
-                <select id="filter-bairro">
-                    <option value="">Todos os bairros</option>
-                </select>
-            </div>
-            <button class="btn-reset" id="btn-reset">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    style="display: inline-block; vertical-align: middle; margin-right: 6px;">
-                    <polyline points="1 4 1 10 7 10"></polyline>
-                    <polyline points="23 20 23 14 17 14"></polyline>
-                    <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
-                </svg>
-                Limpar Filtros
-            </button>
-        </div>
-
-        <div id="results-count"></div>
-
-        <div class="grid" id="events-grid"></div>
+        Limpar Filtros
+      </button>
     </div>
 
-    <script>
-        const eventos = [
- 
-  {
-    "nome": "Theresa Rachel",
-    "dataIso": "2026-01-16",
-    "dataFmt": "16/01 (Sexta)",
-    "hora": "18h",
-    "bairro": "Centro",
-    "local": "Praça do Ferreira"
-  },
-  {
-    "nome": "Mais Melanina",
-    "dataIso": "2026-01-16",
-    "dataFmt": "16/01 (Sexta)",
-    "hora": "19h30",
-    "bairro": "Centro",
-    "local": "Praça do Ferreira"
-  },
-{
-    "nome": "Fundo de Quital",
-    "dataIso": "2026-01-16",
-    "dataFmt": "16/01 (Sexta)",
-    "hora": "21h",
-    "bairro": "Centro",
-    "local": "Praça do Ferreira"
-  },
+    <div id="results-count"></div>
 
-  {
-    "nome": "DJ Kaká de Paula",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "17h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "DTF",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "18h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "DJ Kaká de Paula",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "20h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Dudu Nobre",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "20h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "DJ Kaká de Paula",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "22h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Camaleões do Vila",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "22h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Concentração de baterias",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "15h",
-    "bairro": "Praia de Iracema",
-    "local": "Av. Beira-Mar com Av. Barão de Studart"
-  },
-  {
-    "nome": "Unidos da Cachorra",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "16h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Sambamor",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "16h45",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Baqueta Clube De Ritmistas",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "17h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Bonde Batuque",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "18h15",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Camaleões do Vila",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "19h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "DJ Lolost",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "17h",
-    "bairro": "Barra do Ceará",
-    "local": "Barra do Ceará - Marco Zero"
-  },
-  {
-    "nome": "Pimenta Malagueta",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "18h",
-    "bairro": "Barra do Ceará",
-    "local": "Barra do Ceará - Marco Zero"
-  },
-  {
-    "nome": "DJ Lolost",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "19h30",
-    "bairro": "Barra do Ceará",
-    "local": "Barra do Ceará - Marco Zero"
-  },
-  {
-    "nome": "Banda Eva",
-    "dataIso": "2026-01-17",
-    "dataFmt": "17/01 (Sábado)",
-    "hora": "20h",
-    "bairro": "Barra do Ceará",
-    "local": "Barra do Ceará - Marco Zero"
-  },
-{
-    "nome": "Tereza Cristina",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "20h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "O Kannalha",
-    "dataIso": "2026-01-31",
-    "dataFmt": "31/01 (Sábado)",
-    "hora": "18h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Baiana System",
-    "dataIso": "2026-01-31",
-    "dataFmt": "31/01 (Sábado)",
-    "hora": "20h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Joelma",
-    "dataIso": "2026-02-07",
-    "dataFmt": "07/02 (Sábado)",
-    "hora": "20h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Homenagem ao Macaúba do Bandolim",
-    "dataIso": "2026-02-14",
-    "dataFmt": "14/02 (Sexta)",
-    "hora": "18h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Arlindinho",
-    "dataIso": "2026-02-14",
-    "dataFmt": "14/02 (Sexta)",
-    "hora": "20h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Noda de Caju",
-    "dataIso": "2026-02-15",
-    "dataFmt": "15/02 (Domingo)",
-    "hora": "20h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Tarcísio do Acordeon",
-    "dataIso": "2026-02-15",
-    "dataFmt": "15/02 (Domingo)",
-    "hora": "22h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Olodum",
-    "dataIso": "2026-02-17",
-    "dataFmt": "17/02 (Terça)",
-    "hora": "22h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Chico César",
-    "dataIso": "2026-02-17",
-    "dataFmt": "17/02 (Terça)",
-    "hora": "01h",
-    "bairro": "Centro",
-    "local": "Av. Domingos Olímpio"
-  },
-  {
-    "nome": "Wiu",
-    "dataIso": "2026-02-16",
-    "dataFmt": "16/02 (Segunda)",
-    "hora": "20h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Djonga",
-    "dataIso": "2026-02-16",
-    "dataFmt": "16/02 (Segunda)",
-    "hora": "22h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Jorge Aragão",
-    "dataIso": "2026-02-16",
-    "dataFmt": "16/02 (Segunda)",
-    "hora": "01h",
-    "bairro": "Centro",
-    "local": "Av. Domingos Olímpio"
-  },
-  {
-    "nome": "Luxo da Aldeia",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "19h",
-    "bairro": "Centro",
-    "local": "Mercado dos Pinhões"
-  },
-  {
-    "nome": "Raízes do Grió",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "18h",
-    "bairro": "Centro",
-    "local": "Praça dos Leões"
-  },
-  {
-    "nome": "Caravana Cultural",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "19h30",
-    "bairro": "Centro",
-    "local": "Praça dos Leões"
-  },
-  {
-    "nome": "Maracatu Solar",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "21h",
-    "bairro": "Centro",
-    "local": "Praça dos Leões"
-  },
-  {
-    "nome": "Diana Franco",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "18h",
-    "bairro": "Aerolândia",
-    "local": "Mercado da Aerolândia"
-  },
-  {
-    "nome": "Vanin e Nicinha",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "19h20",
-    "bairro": "Aerolândia",
-    "local": "Mercado da Aerolândia"
-  },
-  {
-    "nome": "Banda Amor de Cristal",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "20h40",
-    "bairro": "Aerolândia",
-    "local": "Mercado da Aerolândia"
-  },
-  {
-    "nome": "Vannick Belchior",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "18h",
-    "bairro": "Praia de Iracema",
-    "local": "Centro Cultural Belchior"
-  },
-  {
-    "nome": "Iracema Bode Beat",
-    "dataIso": "2026-01-23",
-    "dataFmt": "23/01 (Sexta)",
-    "hora": "19h30",
-    "bairro": "Praia de Iracema",
-    "local": "Centro Cultural Belchior"
-  },
-  {
-    "nome": "Gildomar Marinho",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h20",
-    "bairro": "Parque Dois Irmãos",
-    "local": "Parque Dois Irmãos"
-  },
-  {
-    "nome": "Fabinho Varela",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "19h40",
-    "bairro": "Parque Dois Irmãos",
-    "local": "Parque Dois Irmãos"
-  },
-  {
-    "nome": "Jean Dumont e Banda Farra Dusbons",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "21h",
-    "bairro": "Parque Dois Irmãos",
-    "local": "Parque Dois Irmãos"
-  },
-  {
-    "nome": "Parahyba e Cia Bate Palmas",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h20",
-    "bairro": "Jangurussu",
-    "local": "Praça do Cuca Jangurussu"
-  },
-  {
-    "nome": "Iago Gouveia",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "19h40",
-    "bairro": "Jangurussu",
-    "local": "Praça do Cuca Jangurussu"
-  },
-  {
-    "nome": "Couros e Metais",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "21h",
-    "bairro": "Jangurussu",
-    "local": "Praça do Cuca Jangurussu"
-  },
-  {
-    "nome": "Gilson Duty",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h20",
-    "bairro": "Mondubim",
-    "local": "Lagoa do Mondubim"
-  },
-  {
-    "nome": "Allan Brasil",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "19h40",
-    "bairro": "Mondubim",
-    "local": "Lagoa do Mondubim"
-  },
-  {
-    "nome": "Robertinho do Acordeon",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "21h",
-    "bairro": "Mondubim",
-    "local": "Lagoa do Mondubim"
-  },
-  {
-    "nome": "Bloco Num Ispaia Senão Ienche",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h",
-    "bairro": "Praia de Iracema",
-    "local": "Mocinha"
-  },
-  {
-    "nome": "DJ Maria Tavares",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "17h",
-    "bairro": "Centro",
-    "local": "Mercado dos Pinhões"
-  },
-  {
-    "nome": "Dujambu",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h20",
-    "bairro": "Centro",
-    "local": "Mercado dos Pinhões"
-  },
-  {
-    "nome": "Bloco Baba de Camelo",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "19h40",
-    "bairro": "Centro",
-    "local": "Mercado dos Pinhões"
-  },
-  {
-    "nome": "Vanessa A Cantora",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "21h",
-    "bairro": "Centro",
-    "local": "Mercado dos Pinhões"
-  },
-  {
-    "nome": "Concentra Mas Não Sai",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h",
-    "bairro": "Centro",
-    "local": "Praça dos Leões"
-  },
-  {
-    "nome": "DJ Kinas",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "17h",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Banda da Nega",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h20",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Di Ferreira",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "19h40",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Shirlene Aguiar",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "21h",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Projeto Carambola (Infantil)",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "17h",
-    "bairro": "Presidente Kennedy",
-    "local": "Parque Rachel de Queiroz"
-  },
-  {
-    "nome": "Betto Lins",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h",
-    "bairro": "Presidente Kennedy",
-    "local": "Parque Rachel de Queiroz"
-  },
-  {
-    "nome": "Meu bloco vai sair na rua - Fábio Daniel",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "19h20",
-    "bairro": "Presidente Kennedy",
-    "local": "Parque Rachel de Queiroz"
-  },
-  {
-    "nome": "Bárbara Sena e o Bloco das Sardinhas",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "21h",
-    "bairro": "Presidente Kennedy",
-    "local": "Parque Rachel de Queiroz"
-  },
-  {
-    "nome": "Concentração de Blocos",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "15h",
-    "bairro": "Meireles",
-    "local": "Av Beira Mar com Av. Barão de Studart"
-  },
-  {
-    "nome": "Sambamor",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "16h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Camaleões do Vila",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "16h45",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Unidos da Cachorra",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "17h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Baqueta Clube de Ritmistas",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h15",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "Bonde Batuque (Cortejo)",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "19h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterro da Praia de Iracema"
-  },
-  {
-    "nome": "DJ Bugzinha",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "17h",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Mona Mendes e Grupo Essas Mulheres",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "18h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Teresa Cristina - Jessé: As canções de Zeca Pagodinho",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "20h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "Bonde Batuque (Palco)",
-    "dataIso": "2026-01-24",
-    "dataFmt": "24/01 (Sábado)",
-    "hora": "22h30",
-    "bairro": "Praia de Iracema",
-    "local": "Aterrinho da Praia de Iracema"
-  },
-  {
-    "nome": "DJ Lola Mel",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "13h",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Montage",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "14h30",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Luiza Nobel - Baile Preto Carnaval",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "16h",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Gabvic",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "17h30",
-    "bairro": "Benfica",
-    "local": "Praça da Gentilândia"
-  },
-  {
-    "nome": "Gal Saldanha (Infantil)",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "09h",
-    "bairro": "Centro",
-    "local": "Cidade da Criança"
-  },
-  {
-    "nome": "CantaKids (Infantil)",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "10h40",
-    "bairro": "Centro",
-    "local": "Cidade da Criança"
-  },
-  {
-    "nome": "Grupo Murmurando",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "10h",
-    "bairro": "Centro",
-    "local": "Raimundo do Queijo"
-  },
-  {
-    "nome": "Samba de Roda",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "11h30",
-    "bairro": "Centro",
-    "local": "Raimundo do Queijo"
-  },
-  {
-    "nome": "Frevilhando",
-    "dataIso": "2026-01-25",
-    "dataFmt": "25/01 (Domingo)",
-    "hora": "13h",
-    "bairro": "Centro",
-    "local": "Raimundo do Queijo"
-  }
-];
+    <div class="grid" id="events-grid"></div>
+  </div>
 
-        eventos.sort((a, b) => a.dataIso.localeCompare(b.dataIso));
+  <script>
+    let eventos = [
 
-        const grid = document.getElementById('events-grid');
-        const dateSelect = document.getElementById('filter-date');
-        const bairroSelect = document.getElementById('filter-bairro');
-        const countDiv = document.getElementById('results-count');
+      {
+        "nome": "Theresa Rachel",
+        "dataIso": "2026-01-16",
+        "dataFmt": "16/01 (Sexta)",
+        "hora": "18h",
+        "bairro": "Centro",
+        "local": "Praça do Ferreira"
+      },
+      {
+        "nome": "Mais Melanina",
+        "dataIso": "2026-01-16",
+        "dataFmt": "16/01 (Sexta)",
+        "hora": "19h30",
+        "bairro": "Centro",
+        "local": "Praça do Ferreira"
+      },
+      {
+        "nome": "Fundo de Quital",
+        "dataIso": "2026-01-16",
+        "dataFmt": "16/01 (Sexta)",
+        "hora": "21h",
+        "bairro": "Centro",
+        "local": "Praça do Ferreira"
+      },
 
-        function getUniqueDates(eventsList) {
-            const datas = [...new Set(eventsList.map(e => JSON.stringify({ iso: e.dataIso, fmt: e.dataFmt })))];
-            return datas.sort().map(d => JSON.parse(d));
+      {
+        "nome": "DJ Kaká de Paula",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "17h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "DTF",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "18h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "DJ Kaká de Paula",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "20h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Dudu Nobre",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "20h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "DJ Kaká de Paula",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "22h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Camaleões do Vila",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "22h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Concentração de baterias",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "15h",
+        "bairro": "Praia de Iracema",
+        "local": "Av. Beira-Mar com Av. Barão de Studart"
+      },
+      {
+        "nome": "Unidos da Cachorra",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "16h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Sambamor",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "16h45",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Baqueta Clube De Ritmistas",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "17h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Bonde Batuque",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "18h15",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Camaleões do Vila",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "19h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "DJ Lolost",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "17h",
+        "bairro": "Barra do Ceará",
+        "local": "Barra do Ceará - Marco Zero"
+      },
+      {
+        "nome": "Pimenta Malagueta",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "18h",
+        "bairro": "Barra do Ceará",
+        "local": "Barra do Ceará - Marco Zero"
+      },
+      {
+        "nome": "DJ Lolost",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "19h30",
+        "bairro": "Barra do Ceará",
+        "local": "Barra do Ceará - Marco Zero"
+      },
+      {
+        "nome": "Banda Eva",
+        "dataIso": "2026-01-17",
+        "dataFmt": "17/01 (Sábado)",
+        "hora": "20h",
+        "bairro": "Barra do Ceará",
+        "local": "Barra do Ceará - Marco Zero"
+      },
+      {
+        "nome": "Tereza Cristina",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "20h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "O Kannalha",
+        "dataIso": "2026-01-31",
+        "dataFmt": "31/01 (Sábado)",
+        "hora": "18h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Baiana System",
+        "dataIso": "2026-01-31",
+        "dataFmt": "31/01 (Sábado)",
+        "hora": "20h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Joelma",
+        "dataIso": "2026-02-07",
+        "dataFmt": "07/02 (Sábado)",
+        "hora": "20h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Homenagem ao Macaúba do Bandolim",
+        "dataIso": "2026-02-14",
+        "dataFmt": "14/02 (Sexta)",
+        "hora": "18h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Arlindinho",
+        "dataIso": "2026-02-14",
+        "dataFmt": "14/02 (Sexta)",
+        "hora": "20h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Noda de Caju",
+        "dataIso": "2026-02-15",
+        "dataFmt": "15/02 (Domingo)",
+        "hora": "20h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Tarcísio do Acordeon",
+        "dataIso": "2026-02-15",
+        "dataFmt": "15/02 (Domingo)",
+        "hora": "22h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Olodum",
+        "dataIso": "2026-02-17",
+        "dataFmt": "17/02 (Terça)",
+        "hora": "22h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Chico César",
+        "dataIso": "2026-02-17",
+        "dataFmt": "17/02 (Terça)",
+        "hora": "01h",
+        "bairro": "Centro",
+        "local": "Av. Domingos Olímpio"
+      },
+      {
+        "nome": "Wiu",
+        "dataIso": "2026-02-16",
+        "dataFmt": "16/02 (Segunda)",
+        "hora": "20h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Djonga",
+        "dataIso": "2026-02-16",
+        "dataFmt": "16/02 (Segunda)",
+        "hora": "22h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Jorge Aragão",
+        "dataIso": "2026-02-16",
+        "dataFmt": "16/02 (Segunda)",
+        "hora": "01h",
+        "bairro": "Centro",
+        "local": "Av. Domingos Olímpio"
+      },
+      {
+        "nome": "Luxo da Aldeia",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "19h",
+        "bairro": "Centro",
+        "local": "Mercado dos Pinhões"
+      },
+      {
+        "nome": "Raízes do Grió",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "18h",
+        "bairro": "Centro",
+        "local": "Praça dos Leões"
+      },
+      {
+        "nome": "Caravana Cultural",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "19h30",
+        "bairro": "Centro",
+        "local": "Praça dos Leões"
+      },
+      {
+        "nome": "Maracatu Solar",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "21h",
+        "bairro": "Centro",
+        "local": "Praça dos Leões"
+      },
+      {
+        "nome": "Diana Franco",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "18h",
+        "bairro": "Aerolândia",
+        "local": "Mercado da Aerolândia"
+      },
+      {
+        "nome": "Vanin e Nicinha",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "19h20",
+        "bairro": "Aerolândia",
+        "local": "Mercado da Aerolândia"
+      },
+      {
+        "nome": "Banda Amor de Cristal",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "20h40",
+        "bairro": "Aerolândia",
+        "local": "Mercado da Aerolândia"
+      },
+      {
+        "nome": "Vannick Belchior",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "18h",
+        "bairro": "Praia de Iracema",
+        "local": "Centro Cultural Belchior"
+      },
+      {
+        "nome": "Iracema Bode Beat",
+        "dataIso": "2026-01-23",
+        "dataFmt": "23/01 (Sexta)",
+        "hora": "19h30",
+        "bairro": "Praia de Iracema",
+        "local": "Centro Cultural Belchior"
+      },
+      {
+        "nome": "Gildomar Marinho",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h20",
+        "bairro": "Parque Dois Irmãos",
+        "local": "Parque Dois Irmãos"
+      },
+      {
+        "nome": "Fabinho Varela",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "19h40",
+        "bairro": "Parque Dois Irmãos",
+        "local": "Parque Dois Irmãos"
+      },
+      {
+        "nome": "Jean Dumont e Banda Farra Dusbons",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "21h",
+        "bairro": "Parque Dois Irmãos",
+        "local": "Parque Dois Irmãos"
+      },
+      {
+        "nome": "Parahyba e Cia Bate Palmas",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h20",
+        "bairro": "Jangurussu",
+        "local": "Praça do Cuca Jangurussu"
+      },
+      {
+        "nome": "Iago Gouveia",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "19h40",
+        "bairro": "Jangurussu",
+        "local": "Praça do Cuca Jangurussu"
+      },
+      {
+        "nome": "Couros e Metais",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "21h",
+        "bairro": "Jangurussu",
+        "local": "Praça do Cuca Jangurussu"
+      },
+      {
+        "nome": "Gilson Duty",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h20",
+        "bairro": "Mondubim",
+        "local": "Lagoa do Mondubim"
+      },
+      {
+        "nome": "Allan Brasil",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "19h40",
+        "bairro": "Mondubim",
+        "local": "Lagoa do Mondubim"
+      },
+      {
+        "nome": "Robertinho do Acordeon",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "21h",
+        "bairro": "Mondubim",
+        "local": "Lagoa do Mondubim"
+      },
+      {
+        "nome": "Bloco Num Ispaia Senão Ienche",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h",
+        "bairro": "Praia de Iracema",
+        "local": "Mocinha"
+      },
+      {
+        "nome": "DJ Maria Tavares",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "17h",
+        "bairro": "Centro",
+        "local": "Mercado dos Pinhões"
+      },
+      {
+        "nome": "Dujambu",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h20",
+        "bairro": "Centro",
+        "local": "Mercado dos Pinhões"
+      },
+      {
+        "nome": "Bloco Baba de Camelo",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "19h40",
+        "bairro": "Centro",
+        "local": "Mercado dos Pinhões"
+      },
+      {
+        "nome": "Vanessa A Cantora",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "21h",
+        "bairro": "Centro",
+        "local": "Mercado dos Pinhões"
+      },
+      {
+        "nome": "Concentra Mas Não Sai",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h",
+        "bairro": "Centro",
+        "local": "Praça dos Leões"
+      },
+      {
+        "nome": "DJ Kinas",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "17h",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Banda da Nega",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h20",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Di Ferreira",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "19h40",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Shirlene Aguiar",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "21h",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Projeto Carambola (Infantil)",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "17h",
+        "bairro": "Presidente Kennedy",
+        "local": "Parque Rachel de Queiroz"
+      },
+      {
+        "nome": "Betto Lins",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h",
+        "bairro": "Presidente Kennedy",
+        "local": "Parque Rachel de Queiroz"
+      },
+      {
+        "nome": "Meu bloco vai sair na rua - Fábio Daniel",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "19h20",
+        "bairro": "Presidente Kennedy",
+        "local": "Parque Rachel de Queiroz"
+      },
+      {
+        "nome": "Bárbara Sena e o Bloco das Sardinhas",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "21h",
+        "bairro": "Presidente Kennedy",
+        "local": "Parque Rachel de Queiroz"
+      },
+      {
+        "nome": "Concentração de Blocos",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "15h",
+        "bairro": "Meireles",
+        "local": "Av Beira Mar com Av. Barão de Studart"
+      },
+      {
+        "nome": "Sambamor",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "16h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Camaleões do Vila",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "16h45",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Unidos da Cachorra",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "17h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Baqueta Clube de Ritmistas",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h15",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "Bonde Batuque (Cortejo)",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "19h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterro da Praia de Iracema"
+      },
+      {
+        "nome": "DJ Bugzinha",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "17h",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Mona Mendes e Grupo Essas Mulheres",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "18h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Teresa Cristina - Jessé: As canções de Zeca Pagodinho",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "20h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "Bonde Batuque (Palco)",
+        "dataIso": "2026-01-24",
+        "dataFmt": "24/01 (Sábado)",
+        "hora": "22h30",
+        "bairro": "Praia de Iracema",
+        "local": "Aterrinho da Praia de Iracema"
+      },
+      {
+        "nome": "DJ Lola Mel",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "13h",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Montage",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "14h30",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Luiza Nobel - Baile Preto Carnaval",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "16h",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Gabvic",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "17h30",
+        "bairro": "Benfica",
+        "local": "Praça da Gentilândia"
+      },
+      {
+        "nome": "Gal Saldanha (Infantil)",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "09h",
+        "bairro": "Centro",
+        "local": "Cidade da Criança"
+      },
+      {
+        "nome": "CantaKids (Infantil)",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "10h40",
+        "bairro": "Centro",
+        "local": "Cidade da Criança"
+      },
+      {
+        "nome": "Grupo Murmurando",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "10h",
+        "bairro": "Centro",
+        "local": "Raimundo do Queijo"
+      },
+      {
+        "nome": "Samba de Roda",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "11h30",
+        "bairro": "Centro",
+        "local": "Raimundo do Queijo"
+      },
+      {
+        "nome": "Frevilhando",
+        "dataIso": "2026-01-25",
+        "dataFmt": "25/01 (Domingo)",
+        "hora": "13h",
+        "bairro": "Centro",
+        "local": "Raimundo do Queijo"
+      }
+    ];
+
+    // Filtrar eventos passados
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const todayIso = `${year}-${month}-${day}`;
+
+    eventos = eventos.filter(e => e.dataIso >= todayIso);
+
+    eventos.sort((a, b) => a.dataIso.localeCompare(b.dataIso));
+
+    const grid = document.getElementById('events-grid');
+    const dateSelect = document.getElementById('filter-date');
+    const bairroSelect = document.getElementById('filter-bairro');
+    const countDiv = document.getElementById('results-count');
+
+    function getUniqueDates(eventsList) {
+      const datas = [...new Set(eventsList.map(e => JSON.stringify({ iso: e.dataIso, fmt: e.dataFmt })))];
+      return datas.sort().map(d => JSON.parse(d));
+    }
+
+    function getUniqueBairros(eventsList) {
+      return [...new Set(eventsList.map(e => e.bairro))].sort();
+    }
+
+    function updateSelectOptions(selectElement, options, currentValue, defaultText) {
+      selectElement.innerHTML = '';
+      const defaultOption = document.createElement('option');
+      defaultOption.value = "";
+      defaultOption.textContent = defaultText;
+      selectElement.appendChild(defaultOption);
+
+      options.forEach(opt => {
+        const option = document.createElement('option');
+        if (typeof opt === 'object') {
+          option.value = opt.iso;
+          option.textContent = opt.fmt;
+        } else {
+          option.value = opt;
+          option.textContent = opt;
         }
+        selectElement.appendChild(option);
+      });
 
-        function getUniqueBairros(eventsList) {
-            return [...new Set(eventsList.map(e => e.bairro))].sort();
-        }
+      if (currentValue && Array.from(selectElement.options).some(o => o.value === currentValue)) {
+        selectElement.value = currentValue;
+      } else {
+        selectElement.value = "";
+      }
+    }
 
-        function updateSelectOptions(selectElement, options, currentValue, defaultText) {
-            selectElement.innerHTML = '';
-            const defaultOption = document.createElement('option');
-            defaultOption.value = "";
-            defaultOption.textContent = defaultText;
-            selectElement.appendChild(defaultOption);
+    function updateFilters() {
+      const dateVal = dateSelect.value;
+      const bairroVal = bairroSelect.value;
 
-            options.forEach(opt => {
-                const option = document.createElement('option');
-                if (typeof opt === 'object') {
-                    option.value = opt.iso;
-                    option.textContent = opt.fmt;
-                } else {
-                    option.value = opt;
-                    option.textContent = opt;
-                }
-                selectElement.appendChild(option);
-            });
+      const eventsForDate = bairroVal ? eventos.filter(e => e.bairro === bairroVal) : eventos;
+      const uniqueDates = getUniqueDates(eventsForDate);
+      updateSelectOptions(dateSelect, uniqueDates, dateVal, "Todas as datas");
 
-            if (currentValue && Array.from(selectElement.options).some(o => o.value === currentValue)) {
-                selectElement.value = currentValue;
-            } else {
-                selectElement.value = "";
-            }
-        }
+      const eventsForBairro = dateVal ? eventos.filter(e => e.dataIso === dateVal) : eventos;
+      const uniqueBairros = getUniqueBairros(eventsForBairro);
+      updateSelectOptions(bairroSelect, uniqueBairros, bairroVal, "Todos os bairros");
+    }
 
-        function updateFilters() {
-            const dateVal = dateSelect.value;
-            const bairroVal = bairroSelect.value;
+    function renderCards(items) {
+      grid.innerHTML = '';
+      if (items.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><h3>Nenhum bloco encontrado para os filtros selecionados. 😢</h3></div>';
+        countDiv.textContent = '';
+        return;
+      }
 
-            const eventsForDate = bairroVal ? eventos.filter(e => e.bairro === bairroVal) : eventos;
-            const uniqueDates = getUniqueDates(eventsForDate);
-            updateSelectOptions(dateSelect, uniqueDates, dateVal, "Todas as datas");
+      countDiv.textContent = `${items.length} eventos`;
 
-            const eventsForBairro = dateVal ? eventos.filter(e => e.dataIso === dateVal) : eventos;
-            const uniqueBairros = getUniqueBairros(eventsForBairro);
-            updateSelectOptions(bairroSelect, uniqueBairros, bairroVal, "Todos os bairros");
-        }
-
-        function renderCards(items) {
-            grid.innerHTML = '';
-            if (items.length === 0) {
-                grid.innerHTML = '<div class="empty-state"><h3>Nenhum bloco encontrado para os filtros selecionados. 😢</h3></div>';
-                countDiv.textContent = '';
-                return;
-            }
-
-            countDiv.textContent = `${items.length} eventos`;
-
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
                 <div class="card-header">
                     <div class="card-date">${item.dataFmt}</div>
                     <div class="card-title">${item.nome}</div>
@@ -1457,41 +1467,41 @@ require_once 'visitas.php';
                     </div>
                 </div>
             `;
-                grid.appendChild(card);
-            });
-        }
+        grid.appendChild(card);
+      });
+    }
 
-        function filterEvents() {
-            const dateVal = dateSelect.value;
-            const bairroVal = bairroSelect.value;
+    function filterEvents() {
+      const dateVal = dateSelect.value;
+      const bairroVal = bairroSelect.value;
 
-            const filtered = eventos.filter(e => {
-                const matchDate = dateVal ? e.dataIso === dateVal : true;
-                const matchBairro = bairroVal ? e.bairro === bairroVal : true;
-                return matchDate && matchBairro;
-            });
+      const filtered = eventos.filter(e => {
+        const matchDate = dateVal ? e.dataIso === dateVal : true;
+        const matchBairro = bairroVal ? e.bairro === bairroVal : true;
+        return matchDate && matchBairro;
+      });
 
-            renderCards(filtered);
-        }
+      renderCards(filtered);
+    }
 
-        function onFilterChange() {
-            filterEvents();
-            updateFilters();
-        }
+    function onFilterChange() {
+      filterEvents();
+      updateFilters();
+    }
 
-        function resetFilters() {
-            dateSelect.value = "";
-            bairroSelect.value = "";
-            onFilterChange();
-        }
+    function resetFilters() {
+      dateSelect.value = "";
+      bairroSelect.value = "";
+      onFilterChange();
+    }
 
-        dateSelect.addEventListener('change', onFilterChange);
-        bairroSelect.addEventListener('change', onFilterChange);
-        document.getElementById('btn-reset').addEventListener('click', resetFilters);
+    dateSelect.addEventListener('change', onFilterChange);
+    bairroSelect.addEventListener('change', onFilterChange);
+    document.getElementById('btn-reset').addEventListener('click', resetFilters);
 
-        updateFilters();
-        renderCards(eventos);
-    </script>
+    updateFilters();
+    renderCards(eventos);
+  </script>
 
 </body>
 
